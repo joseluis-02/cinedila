@@ -22,7 +22,7 @@ class CustomAppbar extends StatelessWidget {
                 width: 5,
               ),
               Text(
-                'Cinamedelia',
+                'Cinemadelia',
                 style: titleStyle,
               ),
               const Spacer(),
