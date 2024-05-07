@@ -6,7 +6,7 @@ class CustomAppbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
-    final titleStyle = Theme.of(context).textTheme.bodyMedium;
+    final titleStyle = Theme.of(context).textTheme.labelLarge;
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -15,7 +15,7 @@ class CustomAppbar extends StatelessWidget {
           child: Row(
             children: [
               Icon(
-                Icons.movie_creation_outlined,
+                Icons.movie_filter_outlined,
                 color: colors.primary,
               ),
               const SizedBox(
