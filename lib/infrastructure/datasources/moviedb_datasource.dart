@@ -1,6 +1,6 @@
 // Especializado en movie db
-import 'package:cinedila/infrastructure/models/moviedb/movie_details.dart';
 import 'package:dio/dio.dart';
+import 'package:cinedila/infrastructure/models/moviedb/movie_details.dart';
 import 'package:cinedila/infrastructure/mappers/movie_mapper.dart';
 
 import 'package:cinedila/infrastructure/models/moviedb/moviedb_response.dart';

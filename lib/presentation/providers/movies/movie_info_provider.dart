@@ -7,7 +7,15 @@ final movieInfoProvider =
   final getMovieDetails = ref.watch(movieRepositoryProvider).getMovieById;
   return MovieMapNotifier(getMovie: getMovieDetails);
 });
-
+/*
+{
+  '1255212': Movie(),
+  '1122552': Movie(),
+  '2211265': Movie(),
+  '5247852': Movie(),
+  '7852420': Movie(),
+}
+*/
 typedef GetMovieCallback = Future<Movie> Function(String movieId);
 
 class MovieMapNotifier extends StateNotifier<Map<String, Movie>> {
