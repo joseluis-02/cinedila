@@ -1,4 +1,5 @@
 // Especializado en movie db
+import 'package:cinedila/infrastructure/models/moviedb/movie_details.dart';
 import 'package:dio/dio.dart';
 import 'package:cinedila/infrastructure/mappers/movie_mapper.dart';
 
@@ -61,5 +62,18 @@ class MoviedbDatasource extends MoviesDatasource {
       'page': page,
     });
     return _getMoviesJson(response.data);
+  }
+
+  @override
+  Future<Movie> getMovieById(String id) async {
+    // TODO: implement getMovieById
+    final response = await dio.get('/movie/$id');
+    if (response.statusCode != 200) {
+      return throw Exception('Película con el id: $id no existe');
+    }
+    final movieDetails = MovieDetails.fromJson(response.data);
+    final Movie movie = MovieMapper.movieDetailsToEntity(movieDetails);
+
+    return movie;
   }
 }

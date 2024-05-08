@@ -7,4 +7,6 @@ abstract class MoviesRepository {
   Future<List<Movie>> getTopRated({int page = 1});
   // Funcion abstracta para obtener peliculas Upcoming= Proximo (peliculas proximamente)
   Future<List<Movie>> getUpcoming({int page = 1});
+  //Obtener la pelicula por Id
+  Future<Movie> getMovieById(String id);
 }
