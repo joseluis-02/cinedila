@@ -23,7 +23,8 @@ class MovieMapper {
       posterPath: (moviedb.posterPath != '')
           ? 'https://image.tmdb.org/t/p/w500/${moviedb.backdropPath}'
           : 'https://cdn.pixabay.com/photo/2019/03/21/03/18/film-4070151_1280.jpg',
-      releaseDate: moviedb.releaseDate,
+      releaseDate:
+          moviedb.releaseDate != null ? moviedb.releaseDate! : DateTime.now(),
       title: moviedb.title,
       video: moviedb.video,
       voteAverage: moviedb.voteAverage,
