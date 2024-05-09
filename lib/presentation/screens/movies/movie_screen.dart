@@ -82,6 +82,8 @@ class _MovieDetails extends StatelessWidget {
                 child: Image.network(
                   movie.posterPath,
                   width: size.width * 0.3,
+                  height: size.height * 0.2,
+                  fit: BoxFit.cover,
                 ),
               ),
               //Espacio entre widgets

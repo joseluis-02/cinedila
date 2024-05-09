@@ -94,7 +94,7 @@ class _Title extends StatelessWidget {
               ? FilledButton.tonal(
                   style:
                       const ButtonStyle(visualDensity: VisualDensity.compact),
-                  onPressed: () {},
+                  onPressed: null,
                   child: Text(subTitle!))
               : const SizedBox(),
         ],
@@ -137,7 +137,7 @@ class _SlideHorizontal extends StatelessWidget {
                     );
                   }
                   return GestureDetector(
-                      onTap: () => context.push('/movie/${movie.id}'),
+                      onTap: () => context.push('/home/0/movie/${movie.id}'),
                       child: FadeIn(child: child));
                 },
               ),
