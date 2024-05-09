@@ -9,4 +9,6 @@ abstract class MoviesRepository {
   Future<List<Movie>> getUpcoming({int page = 1});
   //Obtener la pelicula por Id
   Future<Movie> getMovieById(String id);
+  //Buscar paginas
+  Future<List<Movie>> searchMovie(String query);
 }

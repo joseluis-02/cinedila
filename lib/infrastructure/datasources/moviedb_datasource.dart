@@ -48,7 +48,6 @@ class MoviedbDatasource extends MoviesDatasource {
 
   @override
   Future<List<Movie>> getTopRated({int page = 1}) async {
-    // TODO: implement getTopRated
     final response = await dio.get('/movie/top_rated', queryParameters: {
       'page': page,
     });
@@ -57,7 +56,6 @@ class MoviedbDatasource extends MoviesDatasource {
 
   @override
   Future<List<Movie>> getUpcoming({int page = 1}) async {
-    // TODO: implement getUpcoming
     final response = await dio.get('/movie/upcoming', queryParameters: {
       'page': page,
     });
@@ -66,7 +64,6 @@ class MoviedbDatasource extends MoviesDatasource {
 
   @override
   Future<Movie> getMovieById(String id) async {
-    // TODO: implement getMovieById
     final response = await dio.get('/movie/$id');
     if (response.statusCode != 200) {
       return throw Exception('Película con el id: $id no existe');
@@ -75,5 +72,14 @@ class MoviedbDatasource extends MoviesDatasource {
     final Movie movie = MovieMapper.movieDetailsToEntity(movieDetails);
 
     return movie;
+  }
+
+  @override
+  Future<List<Movie>> searchMovie(String query) async {
+    final response = await dio.get('/search/movie', queryParameters: {
+      'query': query,
+    });
+
+    return _getMoviesJson(response.data);
   }
 }
