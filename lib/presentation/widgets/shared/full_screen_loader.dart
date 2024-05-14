@@ -12,6 +12,7 @@ class FullScreenLoader extends StatelessWidget {
       'Cargando películas proximamente',
       'Seguimos en espera de películas',
       'Ups! esta tardando más de lo normal',
+      'Revise su conexión a internet por favor',
     ];
     return Stream.periodic(
       const Duration(milliseconds: 1200),
@@ -27,14 +28,14 @@ class FullScreenLoader extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('Espere por favor...'),
-          SizedBox(
+          const Text('Espere por favor...'),
+          const SizedBox(
             height: 10,
           ),
-          CircularProgressIndicator(
+          const CircularProgressIndicator(
             strokeWidth: 1,
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           StreamBuilder(

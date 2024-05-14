@@ -54,9 +54,9 @@ class IsarDatasource extends LocalStorageDatasource {
     if (favoriteMovie != null) {
       // La película ya está en favoritos, la eliminamos
       isar.writeTxnSync(() => isar.movies.deleteSync(favoriteMovie.isarId!));
-    } else {
-      // La película no está en favoritos, la agregamos
-      isar.writeTxnSync(() => isar.movies.putSync(movie));
+      return;
     }
+    // La película no está en favoritos, la agregamos
+    isar.writeTxnSync(() => isar.movies.putSync(movie));
   }
 }

@@ -22,7 +22,7 @@ class SearchMovieDelegate extends SearchDelegate<Movie?> {
   SearchMovieDelegate(
       {required this.searchMovies, required this.initialsMovies})
       : super(
-            searchFieldLabel: 'Buscar películas',
+            searchFieldLabel: 'Título de la película',
             textInputAction: TextInputAction.search);
   //Funcion para limpiar las emisiones de Strams
   void clearStrems() {
@@ -37,7 +37,7 @@ class SearchMovieDelegate extends SearchDelegate<Movie?> {
     if (_debounceTimer?.isActive ?? false) _debounceTimer!.cancel();
 
     //Esto sirve para esperar el tiempo para disparar la peticion
-    _debounceTimer = Timer(const Duration(milliseconds: 500), () async {
+    _debounceTimer = Timer(const Duration(milliseconds: 600), () async {
       //Cuando deja de escribir durante 500 milisegundos
       //print('Buscando peliculas');
       //Aqui es donde hacemos la petion a nuestro endpoint
@@ -87,8 +87,7 @@ class SearchMovieDelegate extends SearchDelegate<Movie?> {
         initialData: false,
         stream: isWriting.stream,
         builder: (context, snapshot) {
-          final isWrite = snapshot.data ?? false;
-          if (isWrite) {
+          if (snapshot.data ?? false) {
             return SpinPerfect(
               infinite: true,
               child: const IconButton(

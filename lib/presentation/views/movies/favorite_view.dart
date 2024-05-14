@@ -1,7 +1,8 @@
-import 'package:cinedila/domain/entities/movie.dart';
-import 'package:cinedila/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:cinedila/domain/entities/movie.dart';
+import 'package:cinedila/presentation/widgets/widgets.dart';
+
 import 'package:cinedila/presentation/providers/providers.dart';
 
 class FavoriteView extends ConsumerStatefulWidget {
@@ -11,7 +12,8 @@ class FavoriteView extends ConsumerStatefulWidget {
   FavoriteViewState createState() => FavoriteViewState();
 }
 
-class FavoriteViewState extends ConsumerState<FavoriteView> {
+class FavoriteViewState extends ConsumerState<FavoriteView>
+    with AutomaticKeepAliveClientMixin {
   bool islastPage = false;
   bool isLoading = false;
   @override
@@ -34,6 +36,7 @@ class FavoriteViewState extends ConsumerState<FavoriteView> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     final colors = Theme.of(context).colorScheme;
     final moviesMap = ref.watch(favoriteMoviesProvider);
     List<Movie> movieList = moviesMap.values.toList();
@@ -63,7 +66,10 @@ class FavoriteViewState extends ConsumerState<FavoriteView> {
     }
     //print(movies);
     return Scaffold(
-      body: MovieMonsory(movies: movieList),
+      body: MovieMonsory(loadNextPage: loadNextPage, movies: movieList),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
