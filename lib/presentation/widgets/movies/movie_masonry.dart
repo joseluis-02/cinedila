@@ -19,10 +19,12 @@ class _MovieMonsoryState extends State<MovieMonsory> {
   void initState() {
     super.initState();
     scrollController.addListener(() {
+      print('----------');
       if (widget.loadNextPage == null) return;
       if ((scrollController.position.pixels + 100) >=
           scrollController.position.maxScrollExtent) {
         widget.loadNextPage!();
+        print('Se dispara');
       }
     });
   }
