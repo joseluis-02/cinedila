@@ -25,13 +25,19 @@ import 'package:cinedila/domain/entities/movie.dart';
   return movies;
 }
 */
+
 class MoviedbDatasource extends MoviesDatasource {
   final dio = Dio(BaseOptions(
-      baseUrl: 'https://api.themoviedb.org/3',
-      queryParameters: {
-        'api_key': Environment.theMovieApiKey,
-        'language': 'es-MX'
-      }));
+    baseUrl: 'https://api.themoviedb.org/3',
+    headers: {
+      'Authorization': 'Bearer ${Environment.theMovieApiKey}',
+      'Content-Type': 'application/json',
+    },
+    queryParameters: {
+      'language': 'es-MX',
+    },
+  ));
+
   List<Movie> _jsonToMovies(Map<String, dynamic> json) {
     final movieDBResponse = MovieDbResponse.fromJson(json);
 
